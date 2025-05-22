@@ -11,17 +11,14 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const { login, isLoggingIn } = useAuthStore()
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setLoading(true)
 
     if (!email || !password) {
       toast("All fields are required");
-      setLoading(false);
       return
     }
 
@@ -30,10 +27,10 @@ const Login: React.FC = () => {
         email,
         password
       })
-      console.log("Signed up userData: ", res)
+      console.log("Logged in userData: ", res)
     } 
     catch (err) {
-      console.error("Signup failed: ", err)
+      console.error("Login failed: ", err)
     }
   }
 
@@ -49,7 +46,7 @@ const Login: React.FC = () => {
               <div className='w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff4e50] to-[#f9d423] flex items-center justify-center transition-all duration-300 shadow-lg shadow-gray-800/30 group-hover:shadow-gray-900/50 group-hover:scale-105'>
                 <MessageSquare className='w-8 h-8 text-white' />
               </div>
-              <h1 className='text-2xl font-bold mt-2 text-white'>Log in to Account</h1>
+              <h1 className='text-2xl font-bold mt-2 text-white'>Log in to Your Account</h1>
               <p className='text-gray-600'>Get started with your free account</p>
             </div>
           </div>
@@ -74,7 +71,7 @@ const Login: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Button className='w-full mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={loading} onClick={handleSubmit}>{loading ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Create Account"}</Button>
+            <Button className='w-full mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={isLoggingIn} onClick={handleSubmit}>{isLoggingIn ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Log in"}</Button>
             <p className='text-center mt-2'>Don&apos;t have an account? <Link to={"/signup"}><span className='text-blue-400'>Sign up</span></Link></p>
           </div>
         </div>

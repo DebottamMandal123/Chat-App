@@ -13,29 +13,24 @@ const Signup: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const { signup, isSigningUp } = useAuthStore()
 
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setLoading(true)
 
     if (!fullName || !email || !password || !confirmPassword) {
       toast("All fields are required");
-      setLoading(false);
       return
     }
 
     if (password.length < 6) {
       toast("Password must be at least 6 characters");
-      setLoading(false);
       return
     }
 
     if (password !== confirmPassword) {
       toast("Please provide the same password")
-      setLoading(false)
       return
     }
 
@@ -110,7 +105,7 @@ const Signup: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Button className='w-full mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={loading} onClick={handleSubmit}>{loading ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Create Account"}</Button>
+            <Button className='w-full mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={isSigningUp} onClick={handleSubmit}>{isSigningUp ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Create Account"}</Button>
             <p className='text-center mt-2'>Already have an account? <Link to={"/login"}><span className='text-blue-400'>Log in</span></Link></p>
           </div>
         </div>
