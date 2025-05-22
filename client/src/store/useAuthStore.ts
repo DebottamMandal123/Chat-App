@@ -3,11 +3,16 @@ import axios from "axios"
 import { toast } from "sonner"
 import { create } from "zustand"
 
-interface UserData {
+interface SignupUserData {
     fullName: string,
     email: string,
     password: string,
     confirmPassword: string
+}
+
+interface LoginUserData {
+    email: string,
+    password: string
 }
 
 interface AuthUser {
@@ -25,7 +30,8 @@ interface AuthStore {
     isUpdatingProfile: boolean,
     isCheckingAuth: boolean,
     checkAuth: () => Promise<void>,
-    signup: (userData: UserData) => Promise<AuthUser>
+    signup: (userData: SignupUserData) => Promise<AuthUser>
+    login: (userData: LoginUserData) => Promise<AuthUser>
     logout: () => Promise<void>
 }
 
@@ -51,7 +57,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
             set({ isCheckingAuth: false })
         }
     },
-    signup: async (userData: UserData) => {
+    signup: async (userData: SignupUserData) => {
         set({ isSigningUp: true })
         try {
             const res = await axios.post("http://localhost:3000/api/auth/signup", userData, {
@@ -71,6 +77,28 @@ export const useAuthStore = create<AuthStore>((set) => ({
         }
         finally {
             set({ isSigningUp: false })
+        }
+    },
+    login: async (userData: LoginUserData) => {
+        set({ isLoggingIn: true })
+        try {
+            const res = await axios.post("http://localhost:3000/api/auth/login", userData, {
+                withCredentials: true
+            })
+            
+            console.log("Log in successful ", res.data);
+            set({ authUser: res.data })
+            toast("Logged in successfully")
+            return res.data
+        }
+        catch(err: any) {
+            console.error("Error in logging in ", err);
+            const errorMessage = err?.response?.data?.message || "Something went wrong. Please try again.";
+            toast(errorMessage)
+            throw err
+        }
+        finally {
+            set({ isLoggingIn: false })
         }
     },
     logout: async () => {
