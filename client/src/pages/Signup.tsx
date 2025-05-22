@@ -64,22 +64,22 @@ const Signup: React.FC = () => {
               <p className='text-gray-600'>Get started with your free account</p>
             </div>
           </div>
-          <div className='w-full'>
-            <div className='w-full mb-2'>
+          <div className='w-full flex flex-col justify-center items-center'>
+            <div className='w-[90%] mb-2'>
               <label className='text-sm px-0.5 py-1'>Full Name</label>
               <div className='relative flex items-center'>
                 <User className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
                 <Input placeholder='John Doe' className='pl-10 border-gray-500' type='text' required={true} onChange={(e) => setFullName(e.target.value)} />
               </div>
             </div>
-            <div className='w-full mb-2'>
+            <div className='w-[90%] mb-2'>
               <label className='text-sm px-0.5 py-1'>Email</label>
               <div className='relative flex items-center'>
                 <Mail className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
                 <Input placeholder='example@gmail.com' className='pl-10 border-gray-500' type='text' required={true} onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
-            <div className='w-full mb-2'>
+            <div className='w-[90%] mb-2'>
               <label className='text-sm px-0.5 py-1'>Password</label>
               <div className='relative flex items-center'>
                 <Lock className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
@@ -92,7 +92,7 @@ const Signup: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className='w-full mb-2'>
+            <div className='w-[90%] mb-4'>
               <label className='text-sm px-0.5 py-1'>Confirm Password</label>
               <div className='relative flex items-center'>
                 <Lock className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
@@ -105,7 +105,7 @@ const Signup: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Button className='w-full mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={isSigningUp} onClick={handleSubmit}>{isSigningUp ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Create Account"}</Button>
+            <Button className='w-[90%] mb-2 bg-gradient-to-br from-[#f83437] to-[#f4d32e] hover:bg-gradient-to-br hover:from-[#e3272a] hover:to-[#e4c52d] active:bg-gradient-to-br active:from-[#ad0003] active:to-[#b29400]' disabled={isSigningUp} onClick={handleSubmit}>{isSigningUp ? <Loader2Icon className='h-4 w-4 animate-spin' /> : "Create Account"}</Button>
             <p className='text-center mt-2'>Already have an account? <Link to={"/login"}><span className='text-blue-400'>Log in</span></Link></p>
           </div>
         </div>
