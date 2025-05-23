@@ -34,6 +34,15 @@ const Login: React.FC = () => {
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const buttonEvent = new Event('click') as any;
+      handleSubmit(buttonEvent);
+    }
+  }
+
   return (
     <div className='min-h-screen grid lg:grid-cols-2'>
       <div className='flex flex-col justify-center items-center p-6 sm:p-12 bg-gray-900 text-white relative overflow-hidden'>
@@ -50,12 +59,12 @@ const Login: React.FC = () => {
               <p className='text-gray-600'>Get started with your free account</p>
             </div>
           </div>
-          <div className='w-full flex flex-col justify-center items-center'>
+          <div className='w-full flex flex-col justify-center items-center' onKeyDown={handleKeyDown}>
             <div className='w-[90%] mb-4'>
               <label className='text-sm px-0.5 py-1'>Email</label>
               <div className='relative flex items-center'>
                 <Mail className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
-                <Input placeholder='example@gmail.com' className='pl-10 border-gray-500' type='text' required={true} onChange={(e) => setEmail(e.target.value)} />
+                <Input placeholder='example@gmail.com' className='pl-10 border-gray-500' type='text' required={true} spellCheck={false} onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
             <div className='w-[90%] mb-4'>

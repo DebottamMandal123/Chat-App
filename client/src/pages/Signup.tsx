@@ -48,9 +48,18 @@ const Signup: React.FC = () => {
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const buttonEvent = new Event('click') as any;
+      handleSubmit(buttonEvent);
+    }
+  }
+
   return (
     <div className='min-h-screen grid lg:grid-cols-2'>
-      <div className='flex flex-col justify-center items-center p-6 sm:p-12 bg-gray-900 text-white relative overflow-hidden'>
+      <div className='flex flex-col justify-center items-center p-6 sm:p-12 bg-gray-900 text-white relative overflow-hidden' onKeyDown={handleKeyDown}>
         <div className='absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900'></div>
         <div className='absolute top-10 right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-xl'></div>
         <div className='absolute bottom-10 left-10 w-24 h-24 bg-blue-500/10 rounded-full blur-xl'></div>
@@ -69,14 +78,14 @@ const Signup: React.FC = () => {
               <label className='text-sm px-0.5 py-1'>Full Name</label>
               <div className='relative flex items-center'>
                 <User className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
-                <Input placeholder='John Doe' className='pl-10 border-gray-500' type='text' required={true} onChange={(e) => setFullName(e.target.value)} />
+                <Input placeholder='John Doe' className='pl-10 border-gray-500' type='text' required={true} spellCheck={false} onChange={(e) => setFullName(e.target.value)} />
               </div>
             </div>
             <div className='w-[90%] mb-2'>
               <label className='text-sm px-0.5 py-1'>Email</label>
               <div className='relative flex items-center'>
                 <Mail className='absolute w-4 h-4 text-gray-500 ml-3 z-10' />
-                <Input placeholder='example@gmail.com' className='pl-10 border-gray-500' type='text' required={true} onChange={(e) => setEmail(e.target.value)} />
+                <Input placeholder='example@gmail.com' className='pl-10 border-gray-500' type='text' required={false} spellCheck={true} onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
             <div className='w-[90%] mb-2'>

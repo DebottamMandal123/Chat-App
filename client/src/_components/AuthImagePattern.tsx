@@ -8,7 +8,7 @@ const AuthImagePattern: React.FC = () => {
     { name: "Emma", avatar: "👩‍💼", status: "online" },
     { name: "John", avatar: "👨‍🔬", status: "offline" },
     { name: "Lisa", avatar: "👩‍🏫", status: "online" },
-    { name: "David", avatar: "👨‍🎯", status: "online" },
+    { name: "David", avatar: "👨", status: "online" },
     { name: "Anna", avatar: "👩‍🎤", status: "offline" },
     { name: "Tom", avatar: "👨‍🍳", status: "online" }
   ];
