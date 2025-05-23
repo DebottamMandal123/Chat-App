@@ -34,6 +34,8 @@ const Navbar: React.FC = () => {
               </div>
             </Link>
 
+            {authUser && (
+            <>  
             <Link to="/profile" className='group'>
               <div className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 border border-gray-700/50 hover:border-gray-600/50 hover:shadow-lg hover:shadow-gray-900/20'>
                 <User className='w-4 h-4 text-gray-300 group-hover:text-white transition-colors' />
@@ -42,7 +44,6 @@ const Navbar: React.FC = () => {
                 </span>
               </div>
             </Link>
-
             <button 
               onClick={() => setShowLogoutDialog(true)}
               className='group flex items-center gap-2 px-3 py-2 rounded-lg bg-red-900/30 hover:bg-red-800/40 transition-all duration-200 border border-red-800/50 hover:border-red-700/50 hover:shadow-lg hover:shadow-red-900/20 cursor-pointer'
@@ -52,6 +53,8 @@ const Navbar: React.FC = () => {
                 Log Out
               </span>
             </button>
+            </>
+            )}
           </div>
         </div>
       </nav>
@@ -77,7 +80,7 @@ const Navbar: React.FC = () => {
                 Confirm Logout
               </h3>
               <p className='text-gray-300 leading-relaxed'>
-                Are you sure you want to sign out? You'll need to log in again to access your messages.
+                Are you sure you want to log out? You'll need to log in again to access your messages.
               </p>
             </div>
             <div className='flex gap-3'>

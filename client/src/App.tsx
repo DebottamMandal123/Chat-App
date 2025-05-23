@@ -9,6 +9,7 @@ import { useAuthStore } from "./store/useAuthStore"
 import { useEffect } from "react"
 import { Loader2Icon } from "lucide-react"
 import { Toaster } from "./components/ui/sonner"
+import Navbar from "./_components/Navbar"
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />}/>
         <Route path="/signup" element={!authUser ? <Signup /> : <Navigate to={"/"} />}/>
