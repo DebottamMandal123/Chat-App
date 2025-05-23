@@ -58,7 +58,7 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <div className='h-[calc(100vh-3.4rem)] grid lg:grid-cols-2'>
+    <div className='min-h-screen grid lg:grid-cols-2'>
       <div className='flex flex-col justify-center items-center p-6 sm:p-12 bg-gray-900 text-white relative overflow-hidden' onKeyDown={handleKeyDown}>
         <div className='absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900'></div>
         <div className='absolute top-10 right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-xl'></div>
