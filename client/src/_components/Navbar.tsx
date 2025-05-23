@@ -11,11 +11,13 @@ const Navbar: React.FC = () => {
     logout();
     setShowLogoutDialog(false);
   };
+  
 
   return (
     <div>
       <nav className='bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900 text-white shadow-2xl border-b border-slate-700/50'>
         <div className='max-w-8xl mx-auto px-6 py-2 flex justify-between items-center'>
+          <Link to={"/"}>
           <div className='flex items-center gap-3 group cursor-pointer'>
             <div className='w-8 h-8 rounded-lg bg-gradient-to-br from-[#ff4e50] to-[#f9d423] flex items-center justify-center transition-all duration-300 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-105 group-hover:rotate-3'>
               <MessageSquare className='w-5 h-5 text-white' />
@@ -24,6 +26,7 @@ const Navbar: React.FC = () => {
               MessageHub
             </h1>
           </div>
+          </Link>
           <div className='flex items-center gap-2'>
             <Link to="/settings" className='group'>
               <div className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 border border-gray-700/50 hover:border-gray-600/50 hover:shadow-lg hover:shadow-gray-900/20'>

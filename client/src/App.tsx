@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Navigate, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import Settings from "./pages/Home"
+import Settings from "./pages/Settings"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
@@ -9,7 +9,6 @@ import { useAuthStore } from "./store/useAuthStore"
 import { useEffect } from "react"
 import { Loader2Icon } from "lucide-react"
 import { Toaster } from "./components/ui/sonner"
-import Navbar from "./_components/Navbar"
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -28,7 +27,6 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <Routes>
         <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />}/>
         <Route path="/signup" element={!authUser ? <Signup /> : <Navigate to={"/"} />}/>
