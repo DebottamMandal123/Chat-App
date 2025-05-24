@@ -35,6 +35,7 @@ interface AuthStore {
     signup: (userData: SignupUserData) => Promise<AuthUser>
     login: (userData: LoginUserData) => Promise<AuthUser>
     logout: () => Promise<void>
+    updateProfile: (userData: FormData) => Promise<void>
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -113,12 +114,33 @@ export const useAuthStore = create<AuthStore>((set) => ({
             toast("User logged out successfully");
         }
         catch(err: any) {
-            console.error("Error in signing up ", err);
+            console.error("Error in logging out ", err);
             const errorMessage = err?.response?.data?.message || "Something went wrong. Please try again.";
             toast(errorMessage)
         }
         finally {
             set({ isLoggingOut: false })
+        }
+    },
+    updateProfile: async (userData: FormData) => {
+        set({ isUpdatingProfile: true })
+        try {
+            const res = await axios.put("http://localhost:3000/api/auth/update-profile", userData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }, 
+                withCredentials: true
+            })
+            set({ authUser: res.data.updatedUser })
+            toast("Profile updated successfully")
+        }
+        catch(err: any) {
+            console.error("Error in updating profile ", err);
+            const errorMessage = err?.response?.data?.message || "Something went wrong. Please try again.";
+            toast(errorMessage)
+        }
+        finally {
+            set({ isUpdatingProfile: false })
         }
     }
 }))
