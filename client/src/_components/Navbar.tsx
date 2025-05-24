@@ -1,10 +1,10 @@
 import { useAuthStore } from '@/store/useAuthStore'
-import { LogOut, MessageSquare, Settings, User, X } from 'lucide-react';
+import { LogOut, MessageSquare, User, X } from 'lucide-react';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const { logout, authUser } = useAuthStore();
+  const { logout } = useAuthStore();
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
   const handleLogout = () => {
@@ -26,18 +26,7 @@ const Navbar: React.FC = () => {
             </h1>
           </div>
           </Link>
-          <div className='flex items-center gap-2'>
-            <Link to="/settings" className='group'>
-              <div className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 border border-gray-700/50 hover:border-gray-600/50 hover:shadow-lg hover:shadow-gray-900/20'>
-                <Settings className='w-4 h-4 text-gray-300 group-hover:text-white transition-colors' />
-                <span className='text-sm font-medium text-gray-300 group-hover:text-white transition-colors capitalize'>
-                  Settings
-                </span>
-              </div>
-            </Link>
-
-            {authUser && (
-            <>  
+          <div className='flex items-center gap-4'>
             <Link to="/profile" className='group'>
               <div className='flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-200 border border-gray-700/50 hover:border-gray-600/50 hover:shadow-lg hover:shadow-gray-900/20'>
                 <User className='w-4 h-4 text-gray-300 group-hover:text-white transition-colors' />
@@ -55,8 +44,6 @@ const Navbar: React.FC = () => {
                 Log Out
               </span>
             </button>
-            </>
-            )}
           </div>
         </div>
       </nav>

@@ -1,5 +1,4 @@
 import AuthImagePattern from '@/_components/AuthImagePattern';
-import Navbar from '@/_components/Navbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -59,8 +58,6 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <>
-    <Navbar />
     <div className='min-h-screen grid lg:grid-cols-2'>
       <div className='flex flex-col justify-center items-center p-6 sm:p-12 bg-gray-900 text-white relative overflow-hidden' onKeyDown={handleKeyDown}>
         <div className='absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900'></div>
@@ -124,7 +121,6 @@ const Signup: React.FC = () => {
       </div>
       <AuthImagePattern />
     </div>
-    </>
   )
 }
 

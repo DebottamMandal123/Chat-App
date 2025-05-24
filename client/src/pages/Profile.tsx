@@ -3,6 +3,7 @@ import { CameraIcon, UserIcon, MailIcon } from 'lucide-react';
 import { useAuthStore } from '@/store/useAuthStore';
 import moment from "moment"
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const Profile: React.FC = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore()
@@ -95,6 +96,7 @@ const Profile: React.FC = () => {
               <span className='text-green-500'>Active</span>
             </div>
           </div>
+          <Button className='w-full mt-6 bg-gradient-to-br from-gray-800 to-gray-600 hover:bg-gradient-to-br hover:from-gray-800 hover:to-gray-500 active:bg-gradient-to-br active:from-gray-800 active:to-gray-700' onClick={() => window.location.href = '/'}>Go back</Button>
         </div>
       </div>
     </div>
