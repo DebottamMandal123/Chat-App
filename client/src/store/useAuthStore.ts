@@ -122,10 +122,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
             set({ isLoggingOut: false })
         }
     },
-    updateProfile: async (userData: FormData) => {
+    updateProfile: async (profilePic: FormData) => {
         set({ isUpdatingProfile: true })
         try {
-            const res = await axios.put("http://localhost:3000/api/auth/update-profile", userData, {
+            const res = await axios.put("http://localhost:3000/api/auth/update-profile", profilePic, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }, 
