@@ -11,7 +11,6 @@ const Navbar: React.FC = () => {
     logout();
     setShowLogoutDialog(false);
   };
-  
 
   return (
     <div>

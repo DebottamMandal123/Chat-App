@@ -19,7 +19,9 @@ interface AuthUser {
     _id: string,
     email: string,
     fullName: string,
-    profilePic: string
+    profilePic: string,
+    createdAt: string,
+    updatedAt: string
 }
 
 interface AuthStore {
