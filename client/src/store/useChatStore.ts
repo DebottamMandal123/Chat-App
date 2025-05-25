@@ -13,7 +13,7 @@ interface Message {
     updatedAt: string
 }
 
-interface User {
+export interface User {
     _id: string,
     email: string,
     fullName: string,
@@ -30,9 +30,10 @@ interface ChatStore {
     isMessagesLoading: boolean,
     isSendingMessage: boolean,
     
-    getUsers: () => Promise<User[]>,
+    getUsers: () => Promise<void>,
     getMessages: (userId: string) => Promise<Message[]>,
     sendMessages: (messageData: { text?: string, image?: string }) => Promise<void>,
+    setSelectedUser: (user: User | null) => void;
 }
 
 export const useChatStore = create<ChatStore>((set) => ({
@@ -46,9 +47,11 @@ export const useChatStore = create<ChatStore>((set) => ({
     getUsers: async () => {
         set({ isUsersLoading: true })
         try {
-            const res = await axios.get("http://localhost:3000/api/user/users");
+            const res = await axios.get("http://localhost:3000/api/user/users", {
+                withCredentials: true
+            });
+            console.log("users: ", res.data)
             set({ users: res.data });
-            return res.data
         }
         catch(err: any) {
             console.error("Error in fetching users ", err);
@@ -63,7 +66,9 @@ export const useChatStore = create<ChatStore>((set) => ({
     getMessages: async (userId: string) => {
         set({ isMessagesLoading: true })
         try {
-            const res = await axios.get(`http://localhost:3000/api/message/${userId}`);
+            const res = await axios.get(`http://localhost:3000/api/message/${userId}`, {
+                withCredentials: true
+            });
             set({ messages: res.data })
             return res.data
         }
@@ -90,5 +95,8 @@ export const useChatStore = create<ChatStore>((set) => ({
         finally {
             set({ isSendingMessage: false })
         }
+    },
+    setSelectedUser: (user: User | null) => {
+        set({ selectedUser: user });
     },
 }))

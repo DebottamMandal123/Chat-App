@@ -1,3 +1,4 @@
+import ChatContainer from '@/_components/ChatContainer';
 import Sidebar from '@/_components/Sidebar';
 import { useChatStore } from '@/store/useChatStore';
 import { MessageSquare } from 'lucide-react';
@@ -13,16 +14,11 @@ const Home: React.FC = () => {
         <div className='fixed top-20 right-20 w-32 h-32 bg-amber-500/10 rounded-full blur-xl pointer-events-none -z-10'></div>
         <div className='fixed bottom-20 left-20 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none -z-10'></div>
         {selectedUser ? (
-          // If a user is selected, display their chat window (placeholder for now)
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-2">Chatting with {}</h2>
-            <p className="text-gray-400">This is where your conversation history and message input will go.</p>
-            {/* You'll add your actual chat components here (e.g., MessageList, MessageInput) */}
-          </div>
+          <ChatContainer />
         ) : (
           <div className='text-center flex flex-col items-center'>
-            <div className='w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff4e50] to-[#f9d423] flex items-center justify-center transition-all duration-300 shadow-lg shadow-gray-800/30 group-hover:shadow-gray-900/50 group-hover:scale-105 mb-4'>
-              <MessageSquare className='w-8 h-8 text-white' />
+            <div className='w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff4e50] to-[#f9d423] flex items-center justify-center transition-all duration-300 shadow-lg shadow-gray-800/30 group-hover:shadow-gray-900/50 group-hover:scale-105 animate-bounce mb-4'>
+              <MessageSquare className='w-10 h-10 text-white' />
             </div>
             <h1 className='text-4xl font-bold mb-2'>Welcome to MessageHub!</h1>
             <p className='text-gray-300'>Select a conversation to start chatting</p>
