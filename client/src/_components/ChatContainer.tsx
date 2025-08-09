@@ -5,7 +5,7 @@ import ChatInput from './ChatInput';
 
 const ChatContainer: React.FC = () => {
   return (
-    <div className='flex flex-col h-full w-full'>
+    <div className='flex flex-col h-full w-full bg-gray-900'>
       <ChatHeader />
       <ChatBody />
       <ChatInput />

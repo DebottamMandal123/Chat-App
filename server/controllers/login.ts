@@ -16,7 +16,7 @@ export const login = async (req: Request, res: Response) => {
 
         if (!user) {
             return res.status(400).json({
-                message: "User with this email does not exist, please sign up to continue"
+                message: "User with this email does not exist, please sign up to create an account"
             })
         }
 

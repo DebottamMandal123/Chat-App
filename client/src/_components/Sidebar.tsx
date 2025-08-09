@@ -69,7 +69,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className="w-96 bg-gray-800 text-white flex flex-col h-screen border-r border-gray-700">
-      <div className="p-4 border-b border-gray-700">
+      <div className="p-4">
         <div className="text-lg font-semibold flex items-center text-gray-200 gap-3">
           <div className='w-6 h-6 rounded-md bg-gradient-to-br from-[#ff4e50] to-[#f9d423] flex items-center justify-center transition-all duration-300 shadow-lg shadow-gray-800/30 group-hover:shadow-gray-900/50 group-hover:scale-105'>
             <MessageSquare className='w-4 h-4 text-white' />
@@ -82,12 +82,13 @@ const Sidebar: React.FC = () => {
             type="text"
             placeholder="Search people..."
             value={searchQuery}
+            spellCheck={false}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent border border-gray-600 transition-colors duration-200"
           />
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-1">
         {isUsersLoading ? (
           <p className="text-gray-400 text-center py-4">Loading contacts...</p>
         ) : filteredContacts.length > 0 ? (
